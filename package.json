@@ -1,0 +1,31 @@
+{
+  "name": "list_site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && npm start",
+    "server": "cd server && npm start",
+    "start": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^4.1.0",
+    "config": "^3.1.0",
+    "mysql": "^2.17.1",
+    "node-cache": "^4.2.0",
+    "nodemon": "^1.18.11",
+    "react": "^16.8.6",
+    "react-icons": "^3.6.1",
+    "react-redux": "^7.0.2",
+    "react-router-dom": "^5.0.0"
+  },
+  "boilerplate": {
+    "name": "client-server-boilerplate",
+    "version": "1.0.0",
+    "description": "",
+    "author": "Michael Sweeney <jfmike@gmail.com> (https://github.com/overthemike)",
+    "license": "MIT"
+  }
+}
