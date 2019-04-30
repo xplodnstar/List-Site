@@ -7,16 +7,16 @@ class HomeTitle extends Component {
     render() {
         return (
             <div className="titleBox">
-                <h1>HomeTitle</h1>
+                <h1>las vegas</h1>
             </div>
         )
     }
 }
 
-function mapStateToProps(appState) {
-    return {
+// function mapStateToProps(appState) {
+//     return {
 
-    }
-}
+//     }
+// }
 
 export default (HomeTitle)

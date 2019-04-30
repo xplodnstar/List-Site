@@ -1,0 +1,8 @@
+{
+    "db": {
+        "host": "localhost",
+        "user": "peggy",
+        "password": "carter",
+        "database": "pegs_list"
+    }
+}

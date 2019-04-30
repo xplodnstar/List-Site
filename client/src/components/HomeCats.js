@@ -1,35 +1,50 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
+import { getCats } from '../actions/actions'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import HomeChildCats from './HomeChildCats'
 
+const HomeCats = props => {
+    useEffect(() => {
+        getCats()
+    }, [])
 
-
-class HomeCats extends Component {
-
-    render() {
-        return (
-            <div className="catsBox">
-                <div className="cats1">
-                    <div className="cat1">Cat</div>
-                    <div className="cat2">Cat2</div>
-                </div>
-                <div className="cats2">
-                    <div className="cat3">Cat3</div>
-                    <div className="cat4">Cat4</div>
-                </div>
-                <div className="cats3">
-                    <div className="cat5">Cat5</div>
-                    <div className="cat6">Cat6</div>
-                    <div className="cat7">Cat7</div>
-                </div>
-
+    return (
+        <div className="catsBox">
+            <div className="cats1">
+                {props.cats1.map(cat => (
+                    <div className="catTitle" key={`'parent ' + ${cat.id}`}>
+                        <h3><Link to={`/${cat.slug}`}>{cat.name}</Link></h3>
+                        <ul><HomeChildCats list={cat.child_categories} /></ul>
+                    </div>
+                ))}
             </div>
-        )
-    }
+            <div className="cats2">
+                {props.cats2.map(cat => (
+                    <div className="catTitle" key={`'parent ' + ${cat.id}`}>
+                        <h3><Link to={`/${cat.slug}`}>{cat.name}</Link></h3>
+                        <ul><HomeChildCats list={cat.child_categories} /></ul>
+                    </div>
+                ))}
+            </div>
+            <div className="cats3">
+                {props.cats3.map(cat => (
+                    <div className="catTitle" key={`'parent ' + ${cat.id}`}>
+                        <h3><Link to={`/${cat.slug}`}>{cat.name}</Link></h3>
+                        <ul><HomeChildCats list={cat.child_categories} /></ul>
+                    </div>
+                ))}
+            </div>
+        </div >
+    )
 }
 
 function mapStateToProps(appState) {
     return {
-
+        cats1: appState.cats1,
+        cats2: appState.cats2,
+        cats3: appState.cats3
     }
 }
 
-export default (HomeCats)
+export default connect(mapStateToProps)(HomeCats)

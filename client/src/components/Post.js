@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { GiCircleSparks } from "react-icons/gi"
-import { GiSecretBook } from "react-icons/gi"
+// import { connect } from 'react-redux'
+// import { Link } from 'react-router-dom'
+// import { GiCircleSparks } from "react-icons/gi"
+// import { GiSecretBook } from "react-icons/gi"
 
-import { getPerson, getCarousel, getSanctuary, carousel, sanctuary } from '../actions/actions'
+// import { getPerson, getCarousel, getSanctuary, carousel, sanctuary } from '../actions/actions'
 
 
 class Post extends Component {
@@ -67,20 +67,20 @@ class Post extends Component {
     }
 }
 
-function mapStateToProps(appState) {
-    console.log(appState)
-    return {
-        // first: appState.first,
-        // last: appState.last,
-        // email: appState.email,
-        // phone: appState.phone,
-        // age: appState.age,
-        // picture: appState.picture,
-        // thumbnail: appState.thumbnail,
-        // carousel: appState.carousel,
-        // sanctuary: appState.sanctuary
-    }
-}
+// function mapStateToProps(appState) {
+//     console.log(appState)
+//     return {
+//         // first: appState.first,
+//         // last: appState.last,
+//         // email: appState.email,
+//         // phone: appState.phone,
+//         // age: appState.age,
+//         // picture: appState.picture,
+//         // thumbnail: appState.thumbnail,
+//         // carousel: appState.carousel,
+//         // sanctuary: appState.sanctuary
+//     }
+// }
 
 export default (Post)
 // connect(mapStateToProps)

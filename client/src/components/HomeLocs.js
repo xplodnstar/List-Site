@@ -7,6 +7,7 @@ class HomeLocs extends Component {
     render() {
         return (
             <div className="locsBox">
+                {/* list of locations from db */}
                 <p>HomeLocs</p>
 
             </div>
@@ -14,10 +15,10 @@ class HomeLocs extends Component {
     }
 }
 
-function mapStateToProps(appState) {
-    return {
+// function mapStateToProps(appState) {
+//     return {
 
-    }
-}
+//     }
+// }
 
 export default (HomeLocs)

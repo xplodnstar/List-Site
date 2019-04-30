@@ -14,6 +14,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 h2 h3 {
+    color: rgb(128,23,39);
+    
+}
+
+p {
+    color: rgb(61,84,143);
+}
+
+/* border: rgb(38,40,70)
+    background-color: rgb(203,191,190) */
+
 .app {
   width: 980px;
   padding: 16px 0;
@@ -29,10 +41,11 @@ body {
 
 .home1 {
   width: 200px;
+  margin: 10px;
 }
 
 .home2 {
-  
+  margin: 10px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -41,19 +54,89 @@ body {
 
 .home3 {
   width: 115px;
-  
+  margin: 10px;
 }
 
 .sideBox {
   width: 100%;
-  height: 200px;
+  /* height: 200px; */
   border: solid 1px mediumpurple;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0px;
+  margin: 0px 10px;
+  font-size: 12px;
+  border-left: solid 1px  rgba(38,40,70,.5);
+  border-right: solid 1px  rgba(38,40,70,.5);
+  background-color: rgba(220, 220, 220,.3);
+}
+
+.sideTitle {
+    color: rgb(128,23,39);
+
+    margin: 0;
+}
+
+.sideTitle h2 {
+    font-weight: 400;
+}
+
+/* .sideTitle h2 {
+    font-weight: 400;
+} */
+
+/* .sideTitle h2 {
+    font-weight: 400;
+} */
+
+/* .sideTitle h2 {
+    font-weight: 400;
+} */
+
+.sideList {
+    margin: 0px;
+    width: 100%;
+}
+
+.sideList ul {
+    width: 100%;
+    list-style: none;
+    text-decoration: none;
+    color: rgb(61,84,143);
+    margin: 0;
+}
+
+.sideList ul li {
+    width: 100%;
+    list-style: none;
+    text-decoration: none;
+    color: rgb(61,84,143);
+    margin: 0;
+}
+
+.sideLink {
+    width: 100%;
+    list-style: none;
+    text-decoration: none;
+    color: rgb(61,84,143);
+    margin: 0;
 }
 
 .titleBox {
   width: 100%;
   height: 50px;
-  border: solid 1px mediumpurple;
+  border-top: solid 1px  rgba(38,40,70,.5);
+  border-bottom: solid 1px  rgba(38,40,70,.5);
+  text-align: center;
+  color: rgb(128,23,39);
+  background-color: rgba(220, 220, 220,.3);
+}
+
+.titleBox h1 {
+    margin: 5px;
 }
 
 .catsBox {
