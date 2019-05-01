@@ -1,24 +1,34 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
+import { getLoc } from '../actions/actions';
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 
+const HomeLocs = (props) => {
+    useEffect(() => {
+        getLoc()
+    }, [])
 
-class HomeLocs extends Component {
+    return (
+        <div className="locsBox">
+            <div className="locTitle">nearby pl</div>
+            <ul>
+                {props.locations.map(item => (
+                    <li key={`'loc ' + ${item.loc_id}`} className="listLoc">
+                        < Link to={`/`}>{item.location}</Link>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
+}
 
-    render() {
-        return (
-            <div className="locsBox">
-                {/* list of locations from db */}
-                <p>HomeLocs</p>
 
-            </div>
-        )
+function mapStateToProps(appState) {
+    console.log(appState)
+    return {
+        locations: appState.locations,
     }
 }
 
-// function mapStateToProps(appState) {
-//     return {
-
-//     }
-// }
-
-export default (HomeLocs)
+export default connect(mapStateToProps)(HomeLocs)

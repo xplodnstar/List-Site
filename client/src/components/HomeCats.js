@@ -13,25 +13,28 @@ const HomeCats = props => {
         <div className="catsBox">
             <div className="cats1">
                 {props.cats1.map(cat => (
-                    <div className="catTitle" key={`'parent ' + ${cat.id}`}>
-                        <h3><Link to={`/${cat.slug}`}>{cat.name}</Link></h3>
-                        <ul><HomeChildCats list={cat.child_categories} /></ul>
+                    <div key={`'parent ' + ${cat.id}`}>
+                        <div className="catTitle">
+                            <h3><Link to={`/${cat.slug}`}>{cat.name}</Link></h3></div>
+                        <ul className="catFlex1"><HomeChildCats list={cat.child_categories} /></ul>
                     </div>
                 ))}
             </div>
             <div className="cats2">
                 {props.cats2.map(cat => (
-                    <div className="catTitle" key={`'parent ' + ${cat.id}`}>
-                        <h3><Link to={`/${cat.slug}`}>{cat.name}</Link></h3>
-                        <ul><HomeChildCats list={cat.child_categories} /></ul>
+                    <div key={`'parent ' + ${cat.id}`}>
+                        <div className="catTitle">
+                            <h3><Link to={`/${cat.slug}`}>{cat.name}</Link></h3></div>
+                        <ul className="catFlex2"><HomeChildCats list={cat.child_categories} /></ul>
                     </div>
                 ))}
             </div>
             <div className="cats3">
                 {props.cats3.map(cat => (
-                    <div className="catTitle" key={`'parent ' + ${cat.id}`}>
-                        <h3><Link to={`/${cat.slug}`}>{cat.name}</Link></h3>
-                        <ul><HomeChildCats list={cat.child_categories} /></ul>
+                    <div key={`'parent ' + ${cat.id}`}>
+                        <div className="catTitle">
+                            <h3><Link to={`/${cat.slug}`}>{cat.name}</Link></h3></div>
+                        <ul className="catFlex3"><HomeChildCats list={cat.child_categories} /></ul>
                     </div>
                 ))}
             </div>

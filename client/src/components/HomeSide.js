@@ -9,8 +9,8 @@ class HomeSide extends Component {
         return (
             <div className="sideBox">
                 <div className="sideTitle"><h2>pegslist</h2></div>
-                {/* <div className="sidePost">
-                    <Link to="/form" className="sideLink">create a posting</Link></div> */}
+                <div className="sidePost">
+                    <Link to="/" className="sideLink">create a posting</Link></div>
                 <div className="sideAcct">my account</div>
                 <div className="sideSearch">search pegslist</div>
                 <div className="sideEvent">event calendar</div>

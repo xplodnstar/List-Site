@@ -14,29 +14,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1 h2 h3 {
-    color: rgb(128,23,39);
-    
-}
-
-p {
-    color: rgb(61,84,143);
-}
-
-/* border: rgb(38,40,70)
-    background-color: rgb(203,191,190) */
 
 .app {
   width: 980px;
-  padding: 16px 0;
+  padding: 5px 0;
   margin: auto;
 }
 
 .homePage {
   width: 100%;
-  border: solid 1px mediumpurple;
+
   display: flex;
-  padding: 25px;
+  padding: 5px;
 }
 
 .home1 {
@@ -58,15 +47,13 @@ p {
 }
 
 .sideBox {
-  width: 100%;
-  /* height: 200px; */
-  border: solid 1px mediumpurple;
+  width: 150px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  padding: 0px;
+  padding: 20px 10px;
   margin: 0px 10px;
   font-size: 12px;
   border-left: solid 1px  rgba(38,40,70,.5);
@@ -81,7 +68,7 @@ p {
 }
 
 .sideTitle h2 {
-    font-weight: 400;
+    font-weight: 500;
 }
 
 /* .sideTitle h2 {
@@ -114,7 +101,7 @@ p {
     list-style: none;
     text-decoration: none;
     color: rgb(61,84,143);
-    margin: 0;
+    margin-left: -15px;
 }
 
 .sideLink {
@@ -136,67 +123,178 @@ p {
 }
 
 .titleBox h1 {
-    margin: 5px;
+  margin: 5px;
 }
 
 .catsBox {
   width: 645px;
-  height: 200px;
-  border: solid 1px mediumpurple;
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
+
 }
 
 .cats1 {
-  width: 30%;
-  height: 200px;
-  border: solid 1px mediumpurple;
+  width: 33%;
+
+
   display: flex;
   flex-direction: column;
 }
 
 .cats2 {
   width: 40%;
-  height: 200px;
-  border: solid 1px mediumpurple;
+
   display: flex;
   flex-direction: column;
 }
 
 .cats3 {
-  width: 20%;
-  height: 200px;
-  border: solid 1px mediumpurple;
+  width: 27%;
+
   display: flex;
   flex-direction: column;
+}
+
+.catTitle {
+  border-top: solid 1px  rgba(220, 220, 220,.8);
+  border-bottom: solid 1px  rgba(220, 220, 220,.8);
+  background-color: rgba(220, 220, 220,.3);
+  color: rgb(61,84,143);
+  font-weight: 600;
+  text-align: center;
+  width: 80%;
+  height: 30px;
+  margin: auto;
+}
+
+.catTitle h3 {
+  margin: 0;
+  text-decoration: none;
+}
+
+.catTitle h3 a {
+  text-decoration: none;
+}
+
+.catFlex1 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 180px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.catFlex2 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height:300px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.catFlex3 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 600px;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .childCats {
   list-style: none;
   color: rgb(61,84,143);
+  font-size: 12px;
+  border-bottom: solid 1px  rgba(220, 220, 220,.8);
+  width: 45%;
+  margin-left: -15px;
+}
+
+.childCats a {
+  color: rgb(61,84,143);
   text-decoration: none;
+  font-size: 12px;
 }
 
 .locsBox {
-  width: 100%;
-  height: 200px;
-  border: solid 1px mediumpurple;
+  width: 130px;
+  margin: 0;
+  padding: 20px 10px;
+  text-align: center;
+  border-left: solid 1px  rgba(38,40,70,.5);
+  border-right: solid 1px  rgba(38,40,70,.5);
+  background-color: rgba(220, 220, 220,.3);
+  color: rgb(61,84,143);
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.locTitle {
+  padding: 2px;
+  border-top: solid 1px  rgba(220, 220, 220,.8);
+  border-bottom: solid 1px  rgba(220, 220, 220,.8);
+  background-color: white;
+  color: rgb(61,84,143);
+  font-weight: 800;
+}
+
+.listLoc {
+  list-style: none;
+  color: rgb(61,84,143);
+  font-size: 12px;
+  margin-left: -35px;
+}
+
+.listLoc a {
+  text-decoration: none;
+  color: rgb(61,84,143);
 }
 
 .footBox {
   width: 100%;
   height: 30px;
-  border: solid 1px mediumpurple;
+  border-top: solid 1px  rgba(38,40,70,.5);
+  border-bottom: solid 1px  rgba(38,40,70,.5);
+  text-align: center;
+  color: rgb(128,23,39);
+  background-color: rgba(220, 220, 220,.3);
 }
 
-.listSearch {
-  
+.postPic img{
+  width: 300px;
 }
 
-.listNav {
-  
+.postBody {
+  width: 800px;
 }
 
 .listPost {
   list-style: none;
+}
+
+.postForm {
+
+}
+
+.formTitle {
+
+}
+
+.formBody {
+
+}
+
+.formLoc {
+
+}
+
+.formPic {
+
+}
+
+.formButton {
+  
 }

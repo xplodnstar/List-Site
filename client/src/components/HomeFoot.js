@@ -7,7 +7,6 @@ class HomeFoot extends Component {
     render() {
         return (
             <div className="footBox">
-                <p>HomeFoot</p>
 
             </div>
         )

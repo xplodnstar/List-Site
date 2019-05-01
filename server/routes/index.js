@@ -64,7 +64,7 @@ router.get('/posts/:categoryId', (req, res, next) => {
 // get the specific post
 router.get('/post/:post_id', (req, res, next) => {
   const sql = `
-  SELECT  p.*, c.name as catName, c.id, l.name as location
+  SELECT  p.*, c.name as catName, c.id as catId, c.slug as catSlug, l.name as location
   FROM posts p 
   LEFT JOIN categories c ON p.category_id = c.id 
   LEFT JOIN locations l ON p.location_id = l.loc_id
