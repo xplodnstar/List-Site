@@ -1,33 +1,46 @@
 import React, { useEffect } from 'react';
 import { getCurrCat, getPostList } from '../actions/actions';
 import { connect } from 'react-redux'
-
+import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 const PostList = (props) => {
     useEffect(() => {
         getCurrCat(props.slug)
-        getPostList()
-    }, [props.slug])
+        getPostList(props.categoryId)
+    }, [props.slug, props.categoryId])
+
+    return (
+        <div>
+            <h1>{props.name}</h1>
+            <Link to="/form" className="sideLink">create a posting</Link>
+            <div className="listSearch"></div>
+            <div className="listNav"></div>
+            <ul>
+                {props.posts.map(post => (
+                    <li key={`'post ' + ${post.id}`} className="listPost">
+                        <div>
+                            {post.date} < Link to={`/post/${post.post_id}`}>{post.title}</Link>&nbsp;({post.location})
+                        </div>
+                    </li>
+                ))}
+            </ul>
+        </div >
+    )
 }
 
-return (
-    <div>
-        <h1>{props.name}</h1>
-        <div className="listSearch"></div>
-        <div className="listNav"></div>
-        <ul>
-            {/* {props.xxx.map(post => (
-                <li key={`'post ' + ${post.id}`}><Link to={`/${post.id}`}>{post.title}</Link></li>
-            ))} */}
-        </ul>
-    </div>
-)
-
 function mapStateToProps(appState, ownProps) {
-    console.log('here', appState)
     return {
         name: appState.currCat.name,
-        slug: ownProps.match.params.slug
+        categoryId: appState.currCat.categoryId,
+        slug: ownProps.match.params.slug,
+        posts: appState.posts.map(item => {
+            return {
+                ...item,
+                date: moment(item.timestamp)
+                    .format('MMM-DD')
+            }
+        })
     }
 }
 

@@ -1,6 +1,7 @@
 import store from '../store'
 import axios from 'axios'
 
+// get category list
 export function getCats() {
     axios.get('/api/categories').then(resp => {
         store.dispatch({
@@ -8,10 +9,12 @@ export function getCats() {
             cats1: [resp.data[0], resp.data[3], resp.data[5]],
             cats2: [resp.data[1], resp.data[4]],
             cats3: [resp.data[2], resp.data[6], resp.data[7]],
+            categories: resp.data
         })
     })
 }
 
+// get single category
 export function getCurrCat(slug) {
     if (slug) {
         axios.get('/api/category/' + slug).then(resp => {
@@ -23,46 +26,42 @@ export function getCurrCat(slug) {
     }
 }
 
+// get post list within single category
 export function getPostList(category_id) {
-    axios.get('/api/posts/:category_id').then(resp => {
+    if (category_id) {
+        axios.get('/api/posts/' + category_id).then(resp => {
+            store.dispatch({
+                type: 'GET_POSTS',
+                payload: resp.data
+            })
+        })
+    }
+}
+
+// get single post
+export function getPost(post_id) {
+    axios.get('/api/post/' + post_id).then(resp => {
         store.dispatch({
-            type: 'GET_POSTS',
-            payload: [resp.data]
+            type: 'GET_POST',
+            payload: resp.data
         })
     })
 }
 
-// export function getPost() {
-//     axios.get('/api/post').then(resp => {
-//         store.dispatch({
-//             type: 'GET_POST',
-//             postTitle: resp.data.title,
-//             postBody: resp.data.body,
-//             postPic: resp.data.pic_url,
-//             postURL: resp.data.url,
-//             postTime: resp.data.timestamp,
-//             postLoc: resp.data.location_id,
-//             postCat: resp.data.category_id,
-//             postID: resp.data.post_id,
-//         })
-//     })
-// }
+// submit a new post
+export function makePost(title, body, location_id, category_id, pic_url) {
+    axios.post('/api/post', { title, body, location_id, category_id, pic_url }).then(() => {
+        getPost()
+    })
+}
 
-
-
-// export function getPicsList() {
-//     axios.get('/api/posts').then(resp => {
-//         store.dispatch({
-//             type: 'GET_PICS',
-//             picsList: resp.data
-//         })
-//     })
-// }
-
-// export function makePost(title, body, loc_id, cat_id, pic_url) {
-//     console.log(item)
-//     axios.post('/api/posts', item).then(() => {
-//         getPost()
-//     })
-// }
+// get location list
+export function getLoc() {
+    axios.get('/api/locations').then(resp => {
+        store.dispatch({
+            type: 'GET_LOC',
+            payload: resp.data
+        })
+    })
+}
 

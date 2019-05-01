@@ -1,33 +1,59 @@
-import React, { useEffect } from 'react';
-import { getCurrCat } from '../actions/actions';
+import React, { useState, useEffect } from 'react';
+import { makePost, getLoc } from '../actions/actions';
 import { connect } from 'react-redux'
+import PostCats from './PostCats'
 
 const PostForm = (props) => {
-    useEffect(() => {
-        getCurrCat(props.slug)
+    const [title, setTitle] = useState('')
+    const [body, setBody] = useState('')
+    const [category_id, setCatId] = useState('')
+    const [location_id, setLocId] = useState('')
+    const [pic_url, setPic] = useState('')
 
-    }, [props.slug])
+    useEffect(() => {
+        getLoc()
+    }, [])
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        makePost(title, body, location_id, props.match.params.category_id, pic_url).then(() => {
+            props.history.goBack()
+        })
+    }
+
+    return (
+        <div>
+            <form>
+                <input type="text" id="title" placeholder="Enter a title, 50 characters" onChange={e => setTitle(e.target.value)} />
+                <textarea col='100' row='30' id="body" placeholder="Enter a description, 255 characters" onChange={e => setBody(e.target.value)} />
+                {/* <select id="category" placeholder="Select a category" onChange={e => setCatId(e.target.value)}>Select a category
+                {props.categories.map(cat => (
+                    <option key={cat.id} className="parentCats">
+                        {cat.name}
+                        <PostCats list={cat.child_categories} className="childCats" />
+                    </option>
+                ))}
+                </select> */}
+                <select id="location" placeholder="Select a location" onChange={e => setLocId(e.target.value)}>Select a location
+                 {props.locations.map(loc => (
+                    <option key={loc.loc_id}>
+                        {loc.location}
+                    </option>
+                ))}
+                </select>
+                <input type="text" id="picture" placeholder="Add a link for your image" onChange={e => setPic(e.target.value)} />
+                <button type="submit"></button>
+            </form>
+        </div>
+    )
 }
 
-return (
-    <div>
-        <h1>{props.name}</h1>
-        <div className="listSearch"></div>
-        <div className="listNav"></div>
-        <ul>
-            {props.list.map(cat => (
-                <li key={`'child ' + ${cat.id}`}><Link to={`/${cat.slug}`}>{cat.name}</Link></li>
-            ))}
-        </ul>
-    </div>
-)
-
-
-function mapStateToProps(appState, ownProps) {
-    console.log('here', appState)
+function mapStateToProps(appState) {
+    console.log(appState)
     return {
-        name: appState.currCat.name,
-        slug: ownProps.match.params.slug
+        post: appState.post,
+        locations: appState.locations,
+        categories: appState.categories,
     }
 }
 

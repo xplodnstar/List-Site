@@ -171,6 +171,12 @@ p {
   flex-direction: column;
 }
 
+.childCats {
+  list-style: none;
+  color: rgb(61,84,143);
+  text-decoration: none;
+}
+
 .locsBox {
   width: 100%;
   height: 200px;
@@ -183,33 +189,14 @@ p {
   border: solid 1px mediumpurple;
 }
 
-
-
-/* .title {
-  text-align: center;
-  font-size: 150%;
+.listSearch {
+  
 }
 
-.title h1 {
-  color: darkgoldenrod;
-  margin: 3px 0;
+.listNav {
+  
 }
 
-.title h2 {
-  margin: 3px 0;
+.listPost {
+  list-style: none;
 }
-
-.title h4 {
-  color: darkgoldenrod;
-  margin: 3px 0;
-}
-
-.card {
-  width: 750px;
-  height: 450px;
-  margin: auto;
-  background-color: rgb(228, 108, 23);
-  color: rgb(48, 22, 3);
-  border-radius: 10px;
-  padding: 50px;
-} */

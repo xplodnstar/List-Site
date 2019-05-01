@@ -14,9 +14,10 @@ const App = props => (
     <Router>
       <div className="app">
         <Route exact path="/" component={Home} />
-        <Route path="/:slug" component={PostList} />
-        <Route exact path="/post/:id" component={Post} />
+        <Route path="/category/:slug" component={PostList} />
+        <Route exact path="/post/:post_id" component={Post} />
         <Route exact path="/form" component={PostForm} />
+
       </div>
     </Router>
   </Provider>

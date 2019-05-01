@@ -10,7 +10,6 @@ router.get('/categories', (req, res, next) => {
   LEFT JOIN categories p ON c.parent_id = p.id
   `
   conn.query(sql, (err, results, fields) => {
-    // console.log(results)
     const cats = results.filter(category => category.parentId === null).map(parent => {
       return {
         id: parent.id,
@@ -34,11 +33,12 @@ router.get('/categories', (req, res, next) => {
 
 // get specific category
 router.get('/category/:slug', (req, res, next) => {
-  const sql = `SELECT name FROM categories WHERE slug = ?`
+  const sql = `SELECT name, id FROM categories WHERE slug = ?`
 
   conn.query(sql, [req.params.slug], (err, results, fields) => {
     res.json({
-      name: results[0].name
+      name: results[0].name,
+      categoryId: results[0].id
     })
   })
 })
@@ -47,7 +47,7 @@ router.get('/category/:slug', (req, res, next) => {
 // list posts within that one category
 router.get('/posts/:categoryId', (req, res, next) => {
   const sql = `
-    SELECT  p.*, c.name as catName, c.id, l.name as location
+    SELECT  p.*, c.name as categoryName, c.id as categoryId, l.name as location
     FROM posts p 
     LEFT JOIN categories c ON p.category_id = c.id 
     LEFT JOIN locations l ON p.location_id = l.loc_id
@@ -56,13 +56,13 @@ router.get('/posts/:categoryId', (req, res, next) => {
     ORDER BY p.post_id DESC
   `
 
-  conn.query(sql, [req.params.slug], (err, results, fields) => {
+  conn.query(sql, [req.params.categoryId], (err, results, fields) => {
     res.json(results)
   })
 })
 
 // get the specific post
-router.get('/post/:id', (req, res, next) => {
+router.get('/post/:post_id', (req, res, next) => {
   const sql = `
   SELECT  p.*, c.name as catName, c.id, l.name as location
   FROM posts p 
@@ -71,7 +71,7 @@ router.get('/post/:id', (req, res, next) => {
   WHERE p.post_id  = ?
   `
 
-  conn.query(sql, [req.params.id], (err, results, fields) => {
+  conn.query(sql, [req.params.post_id], (err, results, fields) => {
     res.json(results[0])
   })
 })
@@ -79,7 +79,7 @@ router.get('/post/:id', (req, res, next) => {
 // get location list
 router.get('/locations', (req, res, next) => {
   const sql = `
-  SELECT  l.name as location
+  SELECT  l.name as location, l.loc_id as loc_id
   FROM locations l 
   `
 

@@ -1,86 +1,31 @@
-import React, { Component } from 'react';
-// import { connect } from 'react-redux'
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux'
 // import { Link } from 'react-router-dom'
-// import { GiCircleSparks } from "react-icons/gi"
-// import { GiSecretBook } from "react-icons/gi"
-
-// import { getPerson, getCarousel, getSanctuary, carousel, sanctuary } from '../actions/actions'
+import { getPost } from '../actions/actions';
 
 
-class Post extends Component {
-    // componentDidMount() {
-    //     getPerson()
-    //     getCarousel()
-    //     getSanctuary()
-    // }
 
-    // addCarousel = (e) => {
-    //     e.preventDefault()
-    //     carousel({
-    //         first: this.props.first,
-    //         last: this.props.last,
-    //         email: this.props.email,
-    //         phone: this.props.phone,
-    //         age: this.props.age,
-    //         picture: this.props.picture,
-    //         thumbnail: this.props.thumbnail,
-    //     })
-    //     getPerson()
-    // }
+const Post = (props) => {
+    useEffect(() => {
+        getPost(props.post_id)
+    }, [props.post_id])
 
-    // addSanctuary = (e) => {
-    //     e.preventDefault()
-    //     sanctuary({
-    //         first: this.props.first,
-    //         last: this.props.last,
-    //         email: this.props.email,
-    //         phone: this.props.phone,
-    //         age: this.props.age,
-    //         picture: this.props.picture,
-    //         thumbnail: this.props.thumbnail,
-    //     })
-    //     getPerson()
-    // }
+    return (
+        <div>
+            <div className="postNav"></div>
+            <div className="postTitle">{props.post.title}</div>
+            <div className="postPic"><img src={props.post.pic_url} alt={props.post.title}></img></div>
+            <div className="postBody">{props.post.body}</div>
+        </div>
+    )
+}
 
-    render() {
-        return (
-            <div className="card"> Post
-                {/* <div className="person">
-                    <div className="pic"><img src={this.props.picture} alt="" id="picture" /></div>
-                    <div className="info">
-                        <div className="name"><div className="label">Name:</div><p>{this.props.first} {this.props.last}</p></div>
-                        <div className="email"><div className="label">Email:</div><p>{this.props.email}</p></div>
-                        <div className="phone"><div className="label">Phone:</div><p>{this.props.phone}</p></div>
-                    </div>
-                </div>
-                <div className="age">{this.props.age}</div>
-                <form className="buttons">
-                    <div className="button"><button id="carousel" onClick={this.addCarousel} ><GiCircleSparks></GiCircleSparks></button></div>
-                    <div className="button"><button id="sanctuary" onClick={this.addSanctuary}><GiSecretBook></GiSecretBook></button></div>
-                </form>
-                <div className="listLinks">
-                    <div><Link className="link" to="/carousel">Carousel {this.props.carousel.length}</Link></div>
-                    <div><Link className="link" to="/sanctuary">Sanctuary {this.props.sanctuary.length}</Link></div>
-                </div> */}
-            </div>
-        )
+function mapStateToProps(appState, ownProps) {
+    console.log(ownProps)
+    return {
+        post: appState.post,
+        post_id: ownProps.match.params.post_id,
     }
 }
 
-// function mapStateToProps(appState) {
-//     console.log(appState)
-//     return {
-//         // first: appState.first,
-//         // last: appState.last,
-//         // email: appState.email,
-//         // phone: appState.phone,
-//         // age: appState.age,
-//         // picture: appState.picture,
-//         // thumbnail: appState.thumbnail,
-//         // carousel: appState.carousel,
-//         // sanctuary: appState.sanctuary
-//     }
-// }
-
-export default (Post)
-// connect(mapStateToProps)
+export default connect(mapStateToProps)(Post)
