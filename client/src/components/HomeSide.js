@@ -13,7 +13,7 @@ class HomeSide extends Component {
                     <Link to="/form" className="sideLink">create a posting</Link></div> */}
                 <div className="sideAcct">my account</div>
                 <div className="sideSearch">search pegslist</div>
-                <div className="sideEvent">ecent calendar</div>
+                <div className="sideEvent">event calendar</div>
                 <div className="sideList">
                     <ul>
                         <li><Link to="/" className="sideLink">help, faq, abuse, legal</Link></li>
