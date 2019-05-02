@@ -1,5 +1,6 @@
 import store from '../store'
 import axios from 'axios'
+// import { Redirect } from 'react-router-dom'
 
 // get category list
 export function getCats() {
@@ -49,10 +50,12 @@ export function getPost(post_id) {
 }
 
 // submit a new post
-export function makePost(title, body, location_id, category_id, pic_url) {
-    axios.post('/api/post', { title, body, location_id, category_id, pic_url }).then(() => {
-        getPost()
-    })
+export function makePost(title, body, category_id, location_id, pic_url) {
+    axios.post('/api/post', { title, body, location_id, category_id, pic_url })
+        .then(() => {
+            getPost()
+            // Redirect('/')
+        })
 }
 
 // get location list

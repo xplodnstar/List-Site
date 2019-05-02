@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { makePost, getLoc } from '../actions/actions';
 import { connect } from 'react-redux'
-import PostCats from './PostCats'
+import { Link } from 'react-router-dom'
 
 const PostForm = (props) => {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
-    const [category_id, setCatId] = useState('')
     const [location_id, setLocId] = useState('')
     const [pic_url, setPic] = useState('')
 
@@ -16,46 +15,45 @@ const PostForm = (props) => {
 
     function handleSubmit(e) {
         e.preventDefault()
-        makePost(title, body, location_id, props.match.params.category_id, pic_url).then(() => {
-            props.history.push('/category/' + props.slug)
-        })
+        makePost(title, body, props.match.params.category_id, location_id, pic_url)
+        // .then(() => {
+        //     props.history.goBack()
+        //     // '/' + props.slug
+        // })
     }
 
     return (
-        <div className="postForm">
-            <form onSubmit={handleSubmit}>
+        <div>
+            <div className="formHeader"><h1>Create your own post</h1></div>
+            <form onSubmit={handleSubmit} className="postForm">
                 <div className="formTitle">
-                    <label for="title">Enter a title</label>
+                    <label htmlFor="title">Enter a title</label>
                     <input type="text" id="title" name="title" placeholder="50 characters" onChange={e => setTitle(e.target.value)} />
-                </div>
+                </div><br />
                 <div className="formBody">
-                    <label for="body">Enter a description</label>
-                    <textarea col='100' row='30' id="body" name="body" placeholder="255 characters" onChange={e => setBody(e.target.value)} />
-                </div>
-                {/* <select id="category" placeholder="Select a category" onChange={e => setCatId(e.target.value)}>Select a category
-                {props.categories.map(cat => (
-                    <option key={cat.id} className="parentCats">
-                        {cat.name}
-                        <PostCats list={cat.child_categories} className="childCats" />
-                    </option>
-                ))}
-                </select> */}
+                    <label htmlFor="body">Enter a description</label>
+                    <textarea cols="40" rows="10" id="body" name="body" placeholder="255 characters" onChange={e => setBody(e.target.value)} />
+                </div><br />
                 <div className="formLoc">
-                    <label for="location">Select a location</label>
+                    <label htmlFor="location">Select a location</label>
                     <select id="location" name="location" onChange={e => setLocId(e.target.value)}>
+                        <option>
+                            Select a location
+                        </option>
                         {props.locations.map(loc => (
-                            <option key={loc.loc_id}>
+                            <option key={loc.loc_id} value={loc.loc_id}>
                                 {loc.location}
                             </option>
                         ))}
                     </select>
-                </div>
+                </div><br />
                 <div className="formPic">
-                    <label for="picture">Add a link for your image</label>
+                    <label htmlFor="picture">Add a link for your image</label>
                     <input type="text" id="picture" name="picture" placeholder="Will not upload, link only" onChange={e => setPic(e.target.value)} />
-                </div>
+                </div><br />
                 <div className="formButton">
-                    <button type="submit"></button>
+                    <button type="submit">submit new post</button><br />
+                    <Link to={'/'}> &lt; back to home</Link>
                 </div>
             </form>
         </div>
@@ -63,13 +61,10 @@ const PostForm = (props) => {
 }
 
 function mapStateToProps(appState, ownProps) {
-    console.log(appState)
     return {
         ...ownProps,
-        slug: appState.PostList.slug,
-        post: appState.post,
+        slug: appState.currCat.slug,
         locations: appState.locations,
-        categories: appState.categories,
     }
 }
 

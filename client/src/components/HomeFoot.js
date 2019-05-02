@@ -13,10 +13,4 @@ class HomeFoot extends Component {
     }
 }
 
-// function mapStateToProps(appState) {
-//     return {
-
-//     }
-// }
-
 export default (HomeFoot)

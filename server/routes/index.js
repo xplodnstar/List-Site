@@ -33,11 +33,12 @@ router.get('/categories', (req, res, next) => {
 
 // get specific category
 router.get('/category/:slug', (req, res, next) => {
-  const sql = `SELECT name, id FROM categories WHERE slug = ?`
+  const sql = `SELECT name, id, slug FROM categories WHERE slug = ?`
 
   conn.query(sql, [req.params.slug], (err, results, fields) => {
     res.json({
       name: results[0].name,
+      slug: results[0].slug,
       categoryId: results[0].id
     })
   })
@@ -95,8 +96,9 @@ router.post('/post', (req, res, next) => {
   VALUES (?, ?, ?, ?, ?)
   `
   conn.query(sql, [req.body.title, req.body.body, req.body.category_id, req.body.location_id, req.body.pic_url], (err, results, fields) => {
+    console.log(err)
     res.json({
-      id: results.insertID,
+      // id: results.insertID,
       title: req.body.title,
       body: req.body.body,
       category_id: req.body.category_id,

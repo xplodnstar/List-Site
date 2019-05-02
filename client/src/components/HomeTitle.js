@@ -13,10 +13,4 @@ class HomeTitle extends Component {
     }
 }
 
-// function mapStateToProps(appState) {
-//     return {
-
-//     }
-// }
-
 export default (HomeTitle)

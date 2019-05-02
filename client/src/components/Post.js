@@ -22,7 +22,6 @@ const Post = (props) => {
 }
 
 function mapStateToProps(appState, ownProps) {
-    console.log(ownProps)
     return {
         post: appState.post,
         post_id: ownProps.match.params.post_id,

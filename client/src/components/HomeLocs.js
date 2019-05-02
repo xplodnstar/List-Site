@@ -25,7 +25,6 @@ const HomeLocs = (props) => {
 
 
 function mapStateToProps(appState) {
-    console.log(appState)
     return {
         locations: appState.locations,
     }

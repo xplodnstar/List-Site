@@ -16,7 +16,7 @@ const App = props => (
         <Route exact path="/" component={Home} />
         <Route path="/category/:slug" component={PostList} />
         <Route exact path="/post/:post_id" component={Post} />
-        <Route exact path="/form" component={PostForm} />
+        <Route exact path="/form/:category_id" component={PostForm} />
 
       </div>
     </Router>

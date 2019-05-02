@@ -279,22 +279,38 @@ body {
 
 }
 
-.formTitle {
+.formHeader {
+  color: rgb(128,23,39);
+}
 
+.formTitle {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .formBody {
-
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .formLoc {
-
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .formPic {
-
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .formButton {
-  
+
 }

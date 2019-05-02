@@ -14,7 +14,7 @@ const PostList = (props) => {
         <div>
             <h1>{props.name}</h1>
             <Link to="/" className="listLink"> &lt; back to home</Link><br /><br />
-            <Link to="/form" className="listLink">create a posting</Link>
+            <Link to={`/form/${props.categoryId}`} className="listLink">create a posting</Link>
             <div className="listSearch"></div>
             <div className="listNav"></div>
             <ul>
